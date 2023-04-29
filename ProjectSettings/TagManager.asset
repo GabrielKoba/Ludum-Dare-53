@@ -45,6 +45,9 @@ TagManager:
   - name: Tile
     uniqueID: 676678879
     locked: 0
-  - name: Arrows
+  - name: Function
+    uniqueID: 164577345
+    locked: 0
+  - name: Direction
     uniqueID: 1261326015
     locked: 0

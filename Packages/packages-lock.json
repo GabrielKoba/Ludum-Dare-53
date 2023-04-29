@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.dbrizov.naughtyattributes": {
-      "version": "file:D:/Projects/Game Development/UnityPackages/NaughtyAttributes-2.1.4",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.cinemachine": {
       "version": "2.8.9",
       "depth": 0,

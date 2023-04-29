@@ -34,7 +34,7 @@ public class Player : MonoBehaviour {
             if (mouseHit.collider.gameObject.tag == "Tile") {
                 Debug.Log("Tile right clicked");
 
-                mouseHit.collider.GetComponent<Tile>().ClearTile();
+                mouseHit.collider.GetComponent<Tile>().ClearTileDirection();
             }
         }
     }

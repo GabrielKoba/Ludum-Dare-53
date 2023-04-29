@@ -1,32 +1,47 @@
+using NaughtyAttributes;
 using System.IO.Pipes;
 using UnityEngine;
 
 public class Tile : MonoBehaviour {
 
-    public enum TileType { Preparator, Cooker };
-    public enum TileDirection { Empty, Right, Left, Up, Down };
+    protected enum TileDirection { Empty, Right, Left, Up, Down };
+    protected enum TileFunction { None, Boiler, Grill, Slicer };
 
     [Header("Tile Direction")]
-    [SerializeField] private TileDirection currentTileDirection;
+    [SerializeField] protected TileDirection currentTileDirection;
     [Space]
-    [SerializeField] private SpriteRenderer arrowSpriteRenderer;
+    [SerializeField] protected SpriteRenderer arrowSpriteRenderer;
     [Space]
-    [SerializeField] private Sprite horizontalArrowSprite;
-    [SerializeField] private Sprite veriticalArrowSprite;
+    [SerializeField] protected Sprite horizontalArrowSprite;
+    [SerializeField] protected Sprite veriticalArrowSprite;
 
-    private void OnValidate() {
-        UpdateTile();
+    [Header("Tile Function")]
+    [SerializeField] protected TileFunction currentTileFunction;
+    [Space]
+    [SerializeField] protected SpriteRenderer functionSpriteRenderer;
+    [Space]
+    [SerializeField] protected Sprite boilerStationSprite;
+    [SerializeField] protected Sprite grillStationSprite;
+    [SerializeField] protected Sprite slicerStationSprite;
+
+    [Header("Tile Data")]
+    [InfoBox("The data contained in this tile.")]
+    [ShowAssetPreview]
+    [SerializeField] protected TileData tileData;
+
+    protected virtual void OnValidate() {
+        UpdateTileSprites();
     }
-    private void Awake() {
-        UpdateTile();
+    protected virtual void Awake() {
+        UpdateTileSprites();
     }
 
-    #region Tile Direction
+    #region Tile Direction Functions
 
-    public void ClearTile() {
+    public void ClearTileDirection() {
         currentTileDirection = TileDirection.Empty;
 
-        UpdateTile();
+        UpdateTileSprites();
     }
 
     public void ChangeTileDirection(Vector2 tileDirection) {
@@ -43,33 +58,80 @@ public class Tile : MonoBehaviour {
             currentTileDirection = TileDirection.Down;
         }
 
-        UpdateTile();
+        UpdateTileSprites();
     }
 
-    public void UpdateTile() {
+    #endregion
+
+    #region Tile Function Functions
+
+    public void ApplyTileFunctionToData() {
+        switch (currentTileFunction) {
+            case TileFunction.None:
+                
+                break;
+            case TileFunction.Boiler:
+
+                break;
+            case TileFunction.Grill:
+
+                break;
+            case TileFunction.Slicer:
+
+                break;
+        }
+    }
+
+    #endregion
+
+    #region General Tile Functions
+
+    public void UpdateTileSprites() {
+        switch (currentTileFunction) {
+            case TileFunction.None:
+                functionSpriteRenderer.color = Color.clear;
+                functionSpriteRenderer.sprite = null;
+                break;
+            case TileFunction.Boiler:
+                functionSpriteRenderer.sprite = boilerStationSprite;
+                functionSpriteRenderer.color = Color.white;
+                break;
+            case TileFunction.Grill:
+                functionSpriteRenderer.sprite = grillStationSprite;
+                functionSpriteRenderer.color = Color.white;
+                break;
+            case TileFunction.Slicer:
+                functionSpriteRenderer.sprite = slicerStationSprite;
+                functionSpriteRenderer.color = Color.white;
+                break;
+        }
+
         switch (currentTileDirection) {
-            case TileDirection.Right:
-                arrowSpriteRenderer.color = Color.white;
-                arrowSpriteRenderer.sprite = horizontalArrowSprite;
-                arrowSpriteRenderer.flipX = false;
-                break;
-            case TileDirection.Left:
-                arrowSpriteRenderer.color = Color.white;
-                arrowSpriteRenderer.sprite = horizontalArrowSprite;
-                arrowSpriteRenderer.flipX = true;
-                break;
-            case TileDirection.Up:
-                arrowSpriteRenderer.color = Color.white;
-                arrowSpriteRenderer.sprite = veriticalArrowSprite;
-                arrowSpriteRenderer.flipY = false;
-                break;
-            case TileDirection.Down:
-                arrowSpriteRenderer.color = Color.white;
-                arrowSpriteRenderer.sprite = veriticalArrowSprite;
-                arrowSpriteRenderer.flipY = true;
-                break;
             case TileDirection.Empty:
                 arrowSpriteRenderer.color = Color.clear;
+                arrowSpriteRenderer.sprite = null;
+                arrowSpriteRenderer.flipX = false;
+                arrowSpriteRenderer.flipY = false;
+                break;
+            case TileDirection.Right:
+                arrowSpriteRenderer.flipX = false;
+                arrowSpriteRenderer.sprite = horizontalArrowSprite;
+                arrowSpriteRenderer.color = Color.white;
+                break;
+            case TileDirection.Left:
+                arrowSpriteRenderer.flipX = true;
+                arrowSpriteRenderer.sprite = horizontalArrowSprite;
+                arrowSpriteRenderer.color = Color.white;
+                break;
+            case TileDirection.Up:
+                arrowSpriteRenderer.flipY = false;
+                arrowSpriteRenderer.sprite = veriticalArrowSprite;
+                arrowSpriteRenderer.color = Color.white;
+                break;
+            case TileDirection.Down:
+                arrowSpriteRenderer.flipY = true;
+                arrowSpriteRenderer.sprite = veriticalArrowSprite;
+                arrowSpriteRenderer.color = Color.white;
                 break;
         }
     }
