@@ -20,21 +20,24 @@ public class Player : MonoBehaviour {
         if (input.mouseLeft) {
             mouseHit = Physics2D.GetRayIntersection(_playerCamera.ScreenPointToRay(input.mouse), Mathf.Infinity, _levelMask);
 
-            if (mouseHit.collider.gameObject.tag == "Tile") {
-                Debug.Log("Tile left clicked");
-
-                if (input.movement != Vector2.zero) {
-                    mouseHit.collider.GetComponent<Tile>().ChangeTileDirection(input.movement);
+            if (mouseHit.collider != null) {
+                if (mouseHit.collider.gameObject.tag == "Tile") {
+                    Tile tileHit = mouseHit.collider.GetComponent<Tile>();
+                    if (input.movement != Vector2.zero) tileHit.ChangeTileDirection(input.movement);
                 }
+                else if (mouseHit.collider.gameObject.tag == "Spawner") {
+                    Spawner spawnerHit = mouseHit.collider.GetComponent<Spawner>();
+                    spawnerHit.SpawnItem();
+                }
+
             }
         }
         else if (input.mouseRight) {
             mouseHit = Physics2D.GetRayIntersection(_playerCamera.ScreenPointToRay(input.mouse), Mathf.Infinity, _levelMask);
 
-            if (mouseHit.collider.gameObject.tag == "Tile") {
-                Debug.Log("Tile right clicked");
-
-                mouseHit.collider.GetComponent<Tile>().ClearTileDirection();
+            if (mouseHit.collider != null && mouseHit.collider.gameObject.tag == "Tile") {
+                Tile tileHit = mouseHit.collider.GetComponent<Tile>();
+                tileHit.ClearTileDirection();
             }
         }
     }

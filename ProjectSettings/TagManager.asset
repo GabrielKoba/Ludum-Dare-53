@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tile
+  - Spawner
   layers:
   - Default
   - TransparentFX
@@ -42,12 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Tile
+  - name: Tiles
     uniqueID: 676678879
     locked: 0
-  - name: Function
+  - name: Conveyors
+    uniqueID: 1261326015
+    locked: 0
+  - name: Stations
     uniqueID: 164577345
     locked: 0
-  - name: Direction
-    uniqueID: 1261326015
+  - name: Items
+    uniqueID: 3148753077
     locked: 0

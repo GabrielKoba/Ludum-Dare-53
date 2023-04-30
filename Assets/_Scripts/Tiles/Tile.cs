@@ -1,49 +1,44 @@
 using NaughtyAttributes;
-using System.IO.Pipes;
+using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class Tile : MonoBehaviour {
 
-    protected enum TileDirection { Empty, Right, Left, Up, Down };
-    protected enum TileFunction { None, Boiler, Grill, Slicer };
+    public enum TileDirection { None, Right, Left, Up, Down };
 
-    [Header("Tile Direction")]
+    [Header("Tile")]
     [SerializeField] protected TileDirection currentTileDirection;
     [Space]
-    [SerializeField] protected SpriteRenderer arrowSpriteRenderer;
+    [SerializeField] protected SpriteRenderer conveyorSpriteRenderer;
     [Space]
-    [SerializeField] protected Sprite horizontalArrowSprite;
-    [SerializeField] protected Sprite veriticalArrowSprite;
-
-    [Header("Tile Function")]
-    [SerializeField] protected TileFunction currentTileFunction;
+    [SerializeField] protected Sprite horizontalConveyorSprite;
+    [SerializeField] protected Sprite veriticalConveyorSprite;
     [Space]
-    [SerializeField] protected SpriteRenderer functionSpriteRenderer;
+    [SerializeField] protected float conveyorTimeToMove = 0.5f;
+    public float neighbouringTilesDistance;
+    protected RaycastHit2D targetedTileHit;
+    [SerializeField] protected Tile targetedTile;
     [Space]
-    [SerializeField] protected Sprite boilerStationSprite;
-    [SerializeField] protected Sprite grillStationSprite;
-    [SerializeField] protected Sprite slicerStationSprite;
-
-    [Header("Tile Data")]
-    [InfoBox("The data contained in this tile.")]
-    [ShowAssetPreview]
-    [SerializeField] protected TileData tileData;
+    [SerializeField] protected Item itemInTile;
 
     protected virtual void OnValidate() {
-        UpdateTileSprites();
+        UpdateTile();
     }
     protected virtual void Awake() {
-        UpdateTileSprites();
+        UpdateTile();
+    }
+    protected virtual void Update() {
+        if (!TileEmpty()) GetTargetTileAndSendItem();
     }
 
-    #region Tile Direction Functions
+    #region Tile Directions & Neighbour
 
     public void ClearTileDirection() {
-        currentTileDirection = TileDirection.Empty;
+        currentTileDirection = TileDirection.None;
 
-        UpdateTileSprites();
+        UpdateTile();
     }
-
     public void ChangeTileDirection(Vector2 tileDirection) {
         if (tileDirection.x > 0) {
             currentTileDirection = TileDirection.Right;
@@ -58,81 +53,75 @@ public class Tile : MonoBehaviour {
             currentTileDirection = TileDirection.Down;
         }
 
-        UpdateTileSprites();
+        UpdateTile();
     }
 
-    #endregion
-
-    #region Tile Function Functions
-
-    public void ApplyTileFunctionToData() {
-        switch (currentTileFunction) {
-            case TileFunction.None:
-                
-                break;
-            case TileFunction.Boiler:
-
-                break;
-            case TileFunction.Grill:
-
-                break;
-            case TileFunction.Slicer:
-
-                break;
-        }
-    }
-
-    #endregion
-
-    #region General Tile Functions
-
-    public void UpdateTileSprites() {
-        switch (currentTileFunction) {
-            case TileFunction.None:
-                functionSpriteRenderer.color = Color.clear;
-                functionSpriteRenderer.sprite = null;
-                break;
-            case TileFunction.Boiler:
-                functionSpriteRenderer.sprite = boilerStationSprite;
-                functionSpriteRenderer.color = Color.white;
-                break;
-            case TileFunction.Grill:
-                functionSpriteRenderer.sprite = grillStationSprite;
-                functionSpriteRenderer.color = Color.white;
-                break;
-            case TileFunction.Slicer:
-                functionSpriteRenderer.sprite = slicerStationSprite;
-                functionSpriteRenderer.color = Color.white;
-                break;
-        }
-
+    [Button("Update Tile")]
+    public virtual void UpdateTile() {
         switch (currentTileDirection) {
-            case TileDirection.Empty:
-                arrowSpriteRenderer.color = Color.clear;
-                arrowSpriteRenderer.sprite = null;
-                arrowSpriteRenderer.flipX = false;
-                arrowSpriteRenderer.flipY = false;
+            case TileDirection.None:
+                conveyorSpriteRenderer.color = Color.clear;
+                conveyorSpriteRenderer.sprite = null;
+                conveyorSpriteRenderer.flipX = false;
+                conveyorSpriteRenderer.flipY = false;
                 break;
             case TileDirection.Right:
-                arrowSpriteRenderer.flipX = false;
-                arrowSpriteRenderer.sprite = horizontalArrowSprite;
-                arrowSpriteRenderer.color = Color.white;
+                conveyorSpriteRenderer.flipX = false;
+                conveyorSpriteRenderer.sprite = horizontalConveyorSprite;
+                conveyorSpriteRenderer.color = Color.white;
                 break;
             case TileDirection.Left:
-                arrowSpriteRenderer.flipX = true;
-                arrowSpriteRenderer.sprite = horizontalArrowSprite;
-                arrowSpriteRenderer.color = Color.white;
+                conveyorSpriteRenderer.flipX = true;
+                conveyorSpriteRenderer.sprite = horizontalConveyorSprite;
+                conveyorSpriteRenderer.color = Color.white;
                 break;
             case TileDirection.Up:
-                arrowSpriteRenderer.flipY = false;
-                arrowSpriteRenderer.sprite = veriticalArrowSprite;
-                arrowSpriteRenderer.color = Color.white;
+                conveyorSpriteRenderer.flipY = false;
+                conveyorSpriteRenderer.sprite = veriticalConveyorSprite;
+                conveyorSpriteRenderer.color = Color.white;
                 break;
             case TileDirection.Down:
-                arrowSpriteRenderer.flipY = true;
-                arrowSpriteRenderer.sprite = veriticalArrowSprite;
-                arrowSpriteRenderer.color = Color.white;
+                conveyorSpriteRenderer.flipY = true;
+                conveyorSpriteRenderer.sprite = veriticalConveyorSprite;
+                conveyorSpriteRenderer.color = Color.white;
                 break;
+        }
+
+        if (GetComponentInChildren<Item>()) itemInTile = GetComponentInChildren<Item>();
+        else if (!GetComponentInChildren<Item>()) itemInTile = null;
+    }
+    public bool TileEmpty() {
+        if (itemInTile) return false;
+        else return true;
+    }
+    protected void GetTargetTileAndSendItem() {
+        switch (currentTileDirection) {
+            case TileDirection.None:
+                break;
+            case TileDirection.Right:
+                targetedTileHit = Physics2D.Raycast(transform.position, Vector2.right, neighbouringTilesDistance + 0.01f);
+                SendItemToNeighbour();
+                break;
+            case TileDirection.Left:
+                targetedTileHit = Physics2D.Raycast(transform.position, -Vector2.right, neighbouringTilesDistance + 0.01f);
+                SendItemToNeighbour();
+                break;
+            case TileDirection.Up:
+                targetedTileHit = Physics2D.Raycast(transform.position, Vector2.up, neighbouringTilesDistance + 0.01f);
+               SendItemToNeighbour();
+                break;
+            case TileDirection.Down:
+                targetedTileHit = Physics2D.Raycast(transform.position, -Vector2.up, neighbouringTilesDistance + 0.01f);
+                SendItemToNeighbour();
+                break;
+        }
+    }
+    private void SendItemToNeighbour() {
+        if (targetedTileHit.collider != null && targetedTileHit.collider.gameObject.tag == "Tile") {
+            targetedTile = targetedTileHit.collider.GetComponent<Tile>();
+            itemInTile.MoveItemToTile(targetedTile, conveyorTimeToMove);
+
+            UpdateTile();
         }
     }
 

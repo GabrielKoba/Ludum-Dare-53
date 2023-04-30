@@ -13,8 +13,6 @@ public class Grid : MonoBehaviour {
     private int tilesAddedToCurrentLine = -1;
     private float currentVerticalSpacing = 0;
 
-    [Button("Update Grid")]
-
     private void OnValidate() {
         UpdateGrid();
     }
@@ -22,6 +20,7 @@ public class Grid : MonoBehaviour {
         UpdateGrid();
     }
 
+    [Button("Update Grid")]
     private void UpdateGrid() {
         tiles.Clear();
         tilesAddedToCurrentLine = -1;
@@ -31,7 +30,9 @@ public class Grid : MonoBehaviour {
             tiles.Add(transform.GetChild(i).gameObject.GetComponent<Tile>());
         }
         foreach (Tile tile in tiles) {
+            tile.transform.GetComponent<BoxCollider2D>().size = new Vector2(spacing, spacing);
             tile.transform.localPosition = Vector3.zero;
+            tile.neighbouringTilesDistance = spacing;
 
             if (tilesAddedToCurrentLine < columns - 1) {
                 tilesAddedToCurrentLine++;

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85eac8b8fb41d7e469f042705b9c9107, type: 3}
+  m_Name: Meat
+  m_EditorClassIdentifier: 
+  simpleRawSprite: {fileID: 21300000, guid: 0d4499fec7af3374db8fefe96fa55626, type: 3}
+  simpleCookedSprite: {fileID: 21300000, guid: e4d7d5e216f60c64593518db508a4a16, type: 3}
+  simpleGrilledSprite: {fileID: 21300000, guid: 3d77bb14734d4b74e84a83d1d2e81fd9, type: 3}
+  slicedRawSprite: {fileID: 21300000, guid: 5cd0ebbcf6ed2bf44b0e987b76918a6f, type: 3}
+  slicedCookedSprite: {fileID: 21300000, guid: f10d2261e89cbca498e09efae917ce6f, type: 3}
+  slicedGrilledSprite: {fileID: 21300000, guid: 8e31e17bd1f47f8488ebf3d0d1dd88c4, type: 3}
+  decaytime: 8
+  grillTime: 5
+  cookTime: 10
+  sliceTime: 5
