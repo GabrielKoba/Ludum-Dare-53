@@ -15,12 +15,21 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "MouseLeft",
+                    "name": "MouseLeftHold",
                     "type": "Button",
                     "id": "80fdd0a6-af15-46ab-b769-9080253f7bfc",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MouseLeftClick",
+                    "type": "Button",
+                    "id": "deedbfde-3c98-4b74-80b1-cc3a44844c60",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap(duration=0.0025)",
                     "initialStateCheck": false
                 },
                 {
@@ -171,7 +180,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MouseLeft",
+                    "action": "MouseLeftHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -183,6 +192,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc701df7-753f-4864-8084-e9cd4ced21db",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseLeftClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

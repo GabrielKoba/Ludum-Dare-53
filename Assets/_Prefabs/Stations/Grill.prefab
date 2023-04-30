@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8295394215544153248}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.025, y: -2.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -104,17 +104,18 @@ MonoBehaviour:
   conveyorSpriteRenderer: {fileID: 8295394216121858390}
   horizontalConveyorSprite: {fileID: 21300000, guid: a2ae407abf28c35448f883c479002f47, type: 3}
   veriticalConveyorSprite: {fileID: 21300000, guid: 179f643183c85674aa6c3d5d958e5be2, type: 3}
-  conveyorTimeToMove: 0.5
-  neighbouringTilesDistance: 1.025
+  conveyorMoveSpeed: 1
+  neighbouringTilesDistance: 1
   targetedTile: {fileID: 0}
   itemInTile: {fileID: 0}
-  currentTileFunction: 1
+  currentlySendingItem: 0
+  currentStationType: 1
   stationSpriteRenderer: {fileID: 8295394217273320358}
   stoveSprite: {fileID: 21300000, guid: f3d129b6ca00b6944b88bf5d0e61f979, type: 3}
   grillSprite: {fileID: 21300000, guid: 26f63169df891f2418f28b6bceb2b4ea, type: 3}
   cuttingBoardSprite: {fileID: 21300000, guid: 65847c3919683d740bbfad5217300788, type: 3}
-  preparingItem: 0
   currentProgress: 0
+  maxProgress: 0
 --- !u!61 &8295394215544153278
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.025, y: 1.025}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8295394216121858392
 GameObject:

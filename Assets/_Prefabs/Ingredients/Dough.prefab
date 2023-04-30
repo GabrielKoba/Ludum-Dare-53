@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 0b71dc28c2bd462489ad3073c47c11d1, type: 2}
   itemSpriteRenderer: {fileID: 5229574340526352029}
+  directionOfOrigin: 0
 --- !u!212 &5229574340526352029
 SpriteRenderer:
   m_ObjectHideFlags: 0

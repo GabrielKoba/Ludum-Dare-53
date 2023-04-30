@@ -15,12 +15,14 @@ public class Tile : MonoBehaviour {
     [SerializeField] protected Sprite horizontalConveyorSprite;
     [SerializeField] protected Sprite veriticalConveyorSprite;
     [Space]
-    [SerializeField] protected float conveyorTimeToMove = 0.5f;
+    [SerializeField] protected float conveyorMoveSpeed = 0.5f;
     public float neighbouringTilesDistance;
     protected RaycastHit2D targetedTileHit;
     [SerializeField] protected Tile targetedTile;
     [Space]
-    [SerializeField] protected Item itemInTile;
+    [SerializeField] public Item itemInTile;
+    [SerializeField] protected bool currentlySendingItem;
+    protected bool preparingItem;
 
     protected virtual void OnValidate() {
         UpdateTile();
@@ -29,6 +31,7 @@ public class Tile : MonoBehaviour {
         UpdateTile();
     }
     protected virtual void Update() {
+        if (itemInTile && itemInTile.currentTile != this) itemInTile = null;
         if (!TileEmpty()) GetTargetTileAndSendItem();
     }
 
@@ -56,7 +59,6 @@ public class Tile : MonoBehaviour {
         UpdateTile();
     }
 
-    [Button("Update Tile")]
     public virtual void UpdateTile() {
         switch (currentTileDirection) {
             case TileDirection.None:
@@ -86,43 +88,46 @@ public class Tile : MonoBehaviour {
                 conveyorSpriteRenderer.color = Color.white;
                 break;
         }
-
-        if (GetComponentInChildren<Item>()) itemInTile = GetComponentInChildren<Item>();
-        else if (!GetComponentInChildren<Item>()) itemInTile = null;
     }
     public bool TileEmpty() {
         if (itemInTile) return false;
         else return true;
     }
-    protected void GetTargetTileAndSendItem() {
+    protected bool GetTargetTileAndSendItem() {
+        currentlySendingItem = true;
+
         switch (currentTileDirection) {
             case TileDirection.None:
-                break;
+                return false;
             case TileDirection.Right:
                 targetedTileHit = Physics2D.Raycast(transform.position, Vector2.right, neighbouringTilesDistance + 0.01f);
-                SendItemToNeighbour();
-                break;
+                return SendItemToNeighbour();
             case TileDirection.Left:
                 targetedTileHit = Physics2D.Raycast(transform.position, -Vector2.right, neighbouringTilesDistance + 0.01f);
-                SendItemToNeighbour();
-                break;
+                return SendItemToNeighbour();
             case TileDirection.Up:
                 targetedTileHit = Physics2D.Raycast(transform.position, Vector2.up, neighbouringTilesDistance + 0.01f);
-               SendItemToNeighbour();
-                break;
+                return SendItemToNeighbour();
             case TileDirection.Down:
                 targetedTileHit = Physics2D.Raycast(transform.position, -Vector2.up, neighbouringTilesDistance + 0.01f);
-                SendItemToNeighbour();
-                break;
+                return SendItemToNeighbour();
         }
+
+        return false;
     }
-    private void SendItemToNeighbour() {
-        if (targetedTileHit.collider != null && targetedTileHit.collider.gameObject.tag == "Tile") {
+    private bool SendItemToNeighbour() {
+        if (targetedTileHit.collider != null && targetedTileHit.collider.gameObject.tag == "Tile" && !TileEmpty()) {
             targetedTile = targetedTileHit.collider.GetComponent<Tile>();
-            itemInTile.MoveItemToTile(targetedTile, conveyorTimeToMove);
 
             UpdateTile();
+            itemInTile.MoveItemToTile(targetedTile, currentTileDirection, conveyorMoveSpeed);
+
+            currentlySendingItem = false;
+            return true;
         }
+
+        currentlySendingItem = false;
+        return false;
     }
 
     #endregion

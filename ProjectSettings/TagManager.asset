@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tile
   - Spawner
+  - Grid
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Items
     uniqueID: 3148753077
+    locked: 0
+  - name: UI
+    uniqueID: 203010233
     locked: 0

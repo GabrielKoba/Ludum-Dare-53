@@ -9,7 +9,7 @@ public class Tile_Station : Tile {
 
     [HorizontalLine(color: EColor.Gray)]
     [Header("Station Tile")]
-    [SerializeField] protected StationType currentTileFunction;
+    [SerializeField] protected StationType currentStationType;
     [Space]
     [SerializeField] protected SpriteRenderer stationSpriteRenderer;
     [Space]
@@ -17,67 +17,93 @@ public class Tile_Station : Tile {
     [SerializeField] protected Sprite grillSprite;
     [SerializeField] protected Sprite cuttingBoardSprite;
     [Space]
-    [SerializeField] protected bool preparingItem;
     public float currentProgress;
+    public float maxProgress;
+    private bool directionOfOriginBlocked;
 
     protected override void Update() {
-        if (!TileEmpty()) UseStation();
+        if (itemInTile && itemInTile.currentTile != this) itemInTile = null;
+        if (!TileEmpty() && !currentlySendingItem) Prepare();
     }
 
     #region Tile Function Functions
 
     protected void UseStation() {
-        switch (currentTileFunction) {
-            case StationType.Stove:
-                if (!preparingItem) StartCoroutine(PrepareItemAndSendToTargetTile(StationType.Stove));
-                break;
-            case StationType.Grill:
-                if (!preparingItem) StartCoroutine(PrepareItemAndSendToTargetTile(StationType.Grill));
-                break;
-            case StationType.CuttingBoard:
-                if (!preparingItem) StartCoroutine(PrepareItemAndSendToTargetTile(StationType.CuttingBoard));
-                break;
-        }
+        preparingItem = true;
     }
 
-    protected IEnumerator PrepareItemAndSendToTargetTile(StationType stationType) {
-        while (true) {
-            preparingItem = true;
+    protected void Prepare() {
+        if (preparingItem) {
             currentProgress += Time.deltaTime;
+            directionOfOriginBlocked = false;
 
-            switch (stationType) {
-                case (StationType.Stove) :
-                    yield return new WaitForSeconds(itemInTile.data.cookTime);
-
-                    itemInTile.ChangeItemState(FoodState.Cooked);
-                    GetTargetTileAndSendItem();
-
+            switch (currentStationType) {
+                case StationType.Stove:
+                    maxProgress = itemInTile.data.cookTime;
                     break;
-                case (StationType.Grill) :
-                    yield return new WaitForSeconds(itemInTile.data.grillTime);
-
-                    itemInTile.ChangeItemState(FoodState.Grilled);
-                    GetTargetTileAndSendItem();
-
+                case StationType.Grill:
+                    maxProgress = itemInTile.data.grillTime;
                     break;
-                case (StationType.CuttingBoard) :
-                    yield return new WaitForSeconds(itemInTile.data.sliceTime);
-
-                    itemInTile.ChangeItemCut(FoodStyle.Sliced);
-                    GetTargetTileAndSendItem();
-
+                case StationType.CuttingBoard:
+                    maxProgress = itemInTile.data.sliceTime;
                     break;
             }
 
-            preparingItem = false;
+            if (currentProgress >= maxProgress) {
+                preparingItem = false;
+            }
+        }
+        else {
             currentProgress = 0;
+
+            switch (currentStationType) {
+                case (StationType.Stove):
+                    itemInTile.ChangeItemState(FoodState.Cooked);
+                    break;
+                case (StationType.Grill):
+                    itemInTile.ChangeItemState(FoodState.Grilled);
+                    break;
+                case (StationType.CuttingBoard):
+                    itemInTile.ChangeItemCut(FoodStyle.Sliced);
+                    break;
+            }
+
+            if (!directionOfOriginBlocked) {
+                currentTileDirection = itemInTile.directionOfOrigin;
+            }
+            if (!GetTargetTileAndSendItem()) {
+                directionOfOriginBlocked = true;
+
+                switch (currentTileDirection) {
+                    case TileDirection.None:
+                        currentTileDirection = TileDirection.Right;
+                        GetTargetTileAndSendItem();
+                        break;
+                    case TileDirection.Right:
+                        currentTileDirection = TileDirection.Down;
+                        GetTargetTileAndSendItem();
+                        break;
+                    case TileDirection.Left:
+                        currentTileDirection = TileDirection.Up;
+                        GetTargetTileAndSendItem();
+                        break;
+                    case TileDirection.Up:
+                        currentTileDirection = TileDirection.Right;
+                        GetTargetTileAndSendItem();
+                        break;
+                    case TileDirection.Down:
+                        currentTileDirection = TileDirection.Left;
+                        GetTargetTileAndSendItem();
+                        break;
+                }
+            }
         }
     }
 
     public override void UpdateTile() {
         base.UpdateTile();
 
-        switch (currentTileFunction) {
+        switch (currentStationType) {
             case StationType.Stove:
                 stationSpriteRenderer.sprite = stoveSprite;
                 stationSpriteRenderer.color = Color.white;
@@ -91,6 +117,8 @@ public class Tile_Station : Tile {
                 stationSpriteRenderer.color = Color.white;
                 break;
         }
+
+        if (!TileEmpty() && !currentlySendingItem) UseStation();
     }
 
     #endregion

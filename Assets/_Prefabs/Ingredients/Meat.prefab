@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5229574340526352028}
   - component: {fileID: 5229574340526352029}
   m_Layer: 0
-  m_Name: Greens
+  m_Name: Meat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a89dfd634ffdc439491ee638d30ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 14dd105f019ac774eac05e600e425e86, type: 2}
+  data: {fileID: 11400000, guid: 0bb6f70e779852244ab55932c15d55bb, type: 2}
   itemSpriteRenderer: {fileID: 5229574340526352029}
+  directionOfOrigin: 0
 --- !u!212 &5229574340526352029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: -1146214219
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 23d421b2fc4ddbd4f945ddf3efbe5cdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d4499fec7af3374db8fefe96fa55626, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

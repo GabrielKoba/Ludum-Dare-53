@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private Camera _playerCamera;
     [SerializeField] private LayerMask _levelMask;
     private RaycastHit2D mouseHit;
+    private bool clickedLeft;
 
     private void Start() {
         input = InputManager.Instance;
@@ -17,7 +18,17 @@ public class Player : MonoBehaviour {
     }
 
     private void ReadFlags() {
-        if (input.mouseLeft) {
+        if (input.mouseLeftClick) {
+            mouseHit = Physics2D.GetRayIntersection(_playerCamera.ScreenPointToRay(input.mouse), Mathf.Infinity, _levelMask);
+
+            if (mouseHit.collider != null) {
+                if (mouseHit.collider.gameObject.tag == "Spawner") {
+                    Spawner spawnerHit = mouseHit.collider.GetComponent<Spawner>();
+                    spawnerHit.SpawnItem();
+                }
+            }
+        }
+        else if (input.mouseLeftHold) {
             mouseHit = Physics2D.GetRayIntersection(_playerCamera.ScreenPointToRay(input.mouse), Mathf.Infinity, _levelMask);
 
             if (mouseHit.collider != null) {
@@ -25,11 +36,6 @@ public class Player : MonoBehaviour {
                     Tile tileHit = mouseHit.collider.GetComponent<Tile>();
                     if (input.movement != Vector2.zero) tileHit.ChangeTileDirection(input.movement);
                 }
-                else if (mouseHit.collider.gameObject.tag == "Spawner") {
-                    Spawner spawnerHit = mouseHit.collider.GetComponent<Spawner>();
-                    spawnerHit.SpawnItem();
-                }
-
             }
         }
         else if (input.mouseRight) {

@@ -186,7 +186,7 @@ MonoBehaviour:
   iconSpriteRenderer: {fileID: 1841711703790788004}
   spawnerIcon: {fileID: 21300000, guid: 216465e6ce55ed746ac366650202e899, type: 3}
   spawnerAnchor: 4
-  linkedTile: {fileID: 0}
+  tileToSpawnIn: {fileID: 0}
   itemToSpawn: {fileID: 5229574340526352002, guid: f8cdd7c3c7544024ba22a64a2f210a0a, type: 3}
 --- !u!61 &7710497693466079490
 BoxCollider2D:

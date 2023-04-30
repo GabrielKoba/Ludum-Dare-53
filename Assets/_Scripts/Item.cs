@@ -1,20 +1,26 @@
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq.Expressions;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static FoodData;
+using static Tile;
 
 public class Item : MonoBehaviour {
 
     [Header("Item")]
     public FoodData data;
     [SerializeField] private SpriteRenderer itemSpriteRenderer;
-    
+
     [Header("Food")]
     protected FoodState currentState;
     protected FoodStyle currentStyle;
 
-    private Vector2 currentVelocity = Vector2.zero;
-    private float timeToReachTile;
+    public Tile currentTile;
+    public List<Tile> tilesToMoveThrough;
+    [HideInInspector] public TileDirection directionOfOrigin;
+    private float itemMoveSpeed;
 
     private void OnValidate() {
         itemSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -25,7 +31,22 @@ public class Item : MonoBehaviour {
         UpdateItem();
     }
     private void Update() {
-        transform.localPosition = Vector2.SmoothDamp(transform.localPosition, Vector3.zero, ref currentVelocity, timeToReachTile);
+        if (currentTile) currentTile.itemInTile = this;
+
+        if (tilesToMoveThrough.Count > 0) {
+            if (transform.position == tilesToMoveThrough[0].transform.position) {
+                currentTile = tilesToMoveThrough[0];
+                tilesToMoveThrough[0].UpdateTile();
+                tilesToMoveThrough.Remove(tilesToMoveThrough[0]);
+            }
+            else {
+                float step = itemMoveSpeed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, tilesToMoveThrough[0].transform.position, step);
+            }
+        }
+        else {
+            transform.position = currentTile.transform.position;
+        }
     }
 
     #region Item Functions
@@ -38,14 +59,12 @@ public class Item : MonoBehaviour {
         currentStyle = style;
         UpdateItem();
     }
-    public void MoveItemToTile(Tile tileToMoveTo, float timeToReachTile) {
-        this.timeToReachTile = timeToReachTile;
+    public void MoveItemToTile(Tile tileToMoveTo, TileDirection directionOfOrigin, float timeToReachTile) {
+        this.directionOfOrigin = directionOfOrigin;
+        this.itemMoveSpeed = timeToReachTile;
 
-        if (tileToMoveTo.TileEmpty()) {
-            gameObject.transform.SetParent(tileToMoveTo.transform);
-            UpdateItem();
-
-            tileToMoveTo.UpdateTile();
+        if (!tilesToMoveThrough.Contains(tileToMoveTo) && tileToMoveTo.TileEmpty()) {
+            tilesToMoveThrough.Add(tileToMoveTo);
         }
     }
     public void UpdateItem() {
