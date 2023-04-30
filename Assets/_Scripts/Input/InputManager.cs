@@ -27,6 +27,7 @@ public class InputManager : MonoBehaviour {
     public bool mouseLeftClick;
     public bool mouseRight;
     public Vector2 movement;
+    public bool shift;
 
     #endregion
 
@@ -37,6 +38,7 @@ public class InputManager : MonoBehaviour {
     public void OnMouseLeftClick(InputAction.CallbackContext context) { mouseLeftClick = context.ReadValueAsButton(); }
     public void OnMouseRight(InputAction.CallbackContext context) { mouseRight = context.ReadValueAsButton(); }
     public void OnMove(InputAction.CallbackContext context) { movement = context.ReadValue<Vector2>(); }
+    public void OnShift(InputAction.CallbackContext context) { shift = context.ReadValueAsButton(); }
 
     #endregion
 

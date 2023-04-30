@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb36cbfaaf402c947b94048b81c3213b, type: 3}
+  m_Name: Fish
+  m_EditorClassIdentifier: 
+  simpleRawSprite: {fileID: 21300000, guid: fb5f89fac76b23f499a8f37f48c97c56, type: 3}
+  simpleCookedSprite: {fileID: 21300000, guid: 1d45f84aa62672a4fb6dadee86ed0b46, type: 3}
+  simpleGrilledSprite: {fileID: 21300000, guid: e640dfd4e911e344c971886ceb9f99aa, type: 3}
+  slicedRawSprite: {fileID: 21300000, guid: c656f652bf1d3ea45b3cfb973ba7e907, type: 3}
+  slicedCookedSprite: {fileID: 21300000, guid: 72b58506a59d51b40ae7ea87dc1becf2, type: 3}
+  slicedGrilledSprite: {fileID: 21300000, guid: 9d5113ebdcdcc49499b7ab1dd1632729, type: 3}
+  grillTime: 4
+  cookTime: 8
+  sliceTime: 4
+  prefab: {fileID: 5229574340526352002, guid: 8dcc27c8e2e4ed248b82560c14af709f, type: 3}

@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour {
     public TileDirection spawnerAnchor;
     public Tile tileToSpawnIn;
     [Space]
-    public GameObject itemToSpawn;
+    public FoodData foodToSpawn;
 
     private void OnValidate() {
         UpdateSpawner();
@@ -45,7 +45,7 @@ public class Spawner : MonoBehaviour {
     }
     public void SpawnItem() {
         if (tileToSpawnIn.TileEmpty()) {
-            GameObject spawnedTile = Instantiate(itemToSpawn, tileToSpawnIn.transform.position, tileToSpawnIn.transform.rotation, transform);
+            GameObject spawnedTile = Instantiate(foodToSpawn.prefab, tileToSpawnIn.transform.position, tileToSpawnIn.transform.rotation, transform);
 
             spawnedTile.transform.GetComponent<Item>().currentTile = tileToSpawnIn;
             spawnedTile.transform.GetComponent<Item>().UpdateItem();

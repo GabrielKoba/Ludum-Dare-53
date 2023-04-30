@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     [Header("Player Settings")]
     [SerializeField] private Camera _playerCamera;
     [SerializeField] private LayerMask _levelMask;
+    [SerializeField] private LayerMask _itemMask;
     private RaycastHit2D mouseHit;
     private bool clickedLeft;
 
@@ -39,13 +40,21 @@ public class Player : MonoBehaviour {
             }
         }
         else if (input.mouseRight) {
-            mouseHit = Physics2D.GetRayIntersection(_playerCamera.ScreenPointToRay(input.mouse), Mathf.Infinity, _levelMask);
+            if (input.shift) {
+                mouseHit = Physics2D.GetRayIntersection(_playerCamera.ScreenPointToRay(input.mouse), Mathf.Infinity, _levelMask);
 
-            if (mouseHit.collider != null && mouseHit.collider.gameObject.tag == "Tile") {
-                Tile tileHit = mouseHit.collider.GetComponent<Tile>();
-                tileHit.ClearTileDirection();
+                if (mouseHit.collider != null && mouseHit.collider.gameObject.tag == "Tile") {
+                    Tile tileHit = mouseHit.collider.GetComponent<Tile>();
+                    tileHit.ClearTileDirection();
+                }
+            }
+            else {
+                mouseHit = Physics2D.GetRayIntersection(_playerCamera.ScreenPointToRay(input.mouse), Mathf.Infinity, _itemMask);
+
+                if (mouseHit.collider != null && mouseHit.collider.gameObject.tag == "Item") {
+                    Destroy(mouseHit.collider.gameObject);
+                }
             }
         }
     }
-
 }

@@ -13,9 +13,10 @@ public class FoodData : ItemData {
     public Sprite slicedCookedSprite;
     public Sprite slicedGrilledSprite;
     [Space]
-    [Range(0f, 20f)] public float decaytime;
     [Range(0f, 20f)] public float grillTime;
     [Range(0f, 20f)] public float cookTime;
     [Range(0f, 20f)] public float sliceTime;
+    [Space]
+    public GameObject prefab;
 
 }

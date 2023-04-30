@@ -1,5 +1,3 @@
-using NaughtyAttributes;
-using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
