@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using NaughtyAttributes;
-using static FoodData;
+using static IngredientData;
 
 public class Tile_Station : Tile {
 
@@ -58,13 +58,13 @@ public class Tile_Station : Tile {
 
             switch (currentStationType) {
                 case (StationType.Stove):
-                    itemInTile.ChangeItemState(FoodState.Cooked);
+                    itemInTile.ChangeItemState(IngredientState.Cooked);
                     break;
                 case (StationType.Grill):
-                    itemInTile.ChangeItemState(FoodState.Grilled);
+                    itemInTile.ChangeItemState(IngredientState.Grilled);
                     break;
                 case (StationType.CuttingBoard):
-                    itemInTile.ChangeItemCut(FoodStyle.Sliced);
+                    itemInTile.ChangeItemCut(IngredientCut.Sliced);
                     break;
             }
 

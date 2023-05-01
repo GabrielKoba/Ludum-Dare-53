@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a89dfd634ffdc439491ee638d30ce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iconRenderer: {fileID: 5229574340526352029}
   data: {fileID: 11400000, guid: 20dda54d32ca79a4faded83510aa3064, type: 2}
-  itemSpriteRenderer: {fileID: 5229574340526352029}
   currentTile: {fileID: 0}
   tileToMoveTo: {fileID: 0}
   directionOfOrigin: 0

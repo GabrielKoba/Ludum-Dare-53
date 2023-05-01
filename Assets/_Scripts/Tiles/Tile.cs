@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour {
     protected RaycastHit2D targetedTileHit;
     [SerializeField] protected Tile targetedTile;
     [Space]
-    [SerializeField] public Item itemInTile;
+    [SerializeField] public IngredientInstance itemInTile;
     [SerializeField] protected bool currentlySendingItem;
     protected bool preparingItem;
 

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b46b580edde5248ade136a7ee1459d, type: 3}
+  m_Name: Vegetarian Pasta
+  m_EditorClassIdentifier: 
+  recipeName: Vegetarian Pasta
+  difficultyLevel: 0
+  ingredient1: {fileID: 0}
+  amountRequired1: 0
+  ingredientState1: 0
+  ingredientStyle1: 0
+  ingredient2: {fileID: 0}
+  amountRequired2: 0
+  ingredientState2: 0
+  ingredientStyle2: 0
+  ingredient3: {fileID: 0}
+  amountRequired3: 0
+  ingredientState3: 0
+  ingredientStyle3: 0
+  ingredient4: {fileID: 0}
+  amountRequired4: 0
+  ingredientState4: 0
+  ingredientStyle4: 0
