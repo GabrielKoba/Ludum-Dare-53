@@ -29,12 +29,12 @@ public class IngredientInstance : MonoBehaviour {
         UpdateItem();
     }
     private void Update() {
-        if (currentTile) currentTile.itemInTile = this;
+        if (currentTile) currentTile.ingredientInTile = this;
 
         if (tileToMoveTo) {
             if (transform.position == tileToMoveTo.transform.position) {
                 currentTile = tileToMoveTo;
-                tileToMoveTo.UpdateTile();
+                // tileToMoveTo.UpdateTile();
                 tileToMoveTo = null;
             }
             else {
@@ -49,11 +49,11 @@ public class IngredientInstance : MonoBehaviour {
 
     #region Item Functions
 
-    public void ChangeItemState(IngredientState state) {
+    public void ChangeIngredientState(IngredientState state) {
         currentState = state;
         UpdateItem();
     }
-    public void ChangeItemCut(IngredientCut style) {
+    public void ChangeIngredientCut(IngredientCut style) {
         currentStyle = style;
         UpdateItem();
     }

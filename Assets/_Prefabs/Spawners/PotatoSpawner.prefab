@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 164577345
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 67ec8573a3bb08049b92bf124807ea51, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0a9f776c24c93d45be285286c2a4de0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconSpriteRenderer: {fileID: 744644212322135204}
-  spawnerAnchor: 0
+  spawnerAnchor: 4
   tileToSpawnIn: {fileID: 0}
   foodToSpawn: {fileID: 11400000, guid: 603de22c7bfc34e47a41573f87995842, type: 2}
 --- !u!61 &8708732642366865410

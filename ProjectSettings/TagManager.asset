@@ -8,6 +8,9 @@ TagManager:
   - Spawner
   - Grid
   - Item
+  - Station
+  - Customer
+  - Delivery
   layers:
   - Default
   - TransparentFX

@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour {
 
             spawnedTile.transform.GetComponent<IngredientInstance>().currentTile = tileToSpawnIn;
             spawnedTile.transform.GetComponent<IngredientInstance>().UpdateItem();
-            tileToSpawnIn.UpdateTile();
+            // tileToSpawnIn.UpdateTile();
         }
     }
 
