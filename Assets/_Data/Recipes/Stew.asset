@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b46b580edde5248ade136a7ee1459d, type: 3}
+  m_Name: Stew
+  m_EditorClassIdentifier: 
+  recipeName: Fish Soup
+  difficultyLevel: 0
+  ingredient1: {fileID: 11400000, guid: 0bb6f70e779852244ab55932c15d55bb, type: 2}
+  ingredientState1: 2
+  ingredientCut1: 1
+  ingredient2: {fileID: 11400000, guid: 14dd105f019ac774eac05e600e425e86, type: 2}
+  ingredientState2: 2
+  ingredientCut2: 1
+  ingredient3: {fileID: 11400000, guid: 37b6b5b1d7605df43b94a0727b317f16, type: 2}
+  ingredientState3: 2
+  ingredientCut3: 1
+  ingredient4: {fileID: 11400000, guid: 5958ba3f06c60d34a879df08175907dc, type: 2}
+  ingredientState4: 2
+  ingredientCut4: 1

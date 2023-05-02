@@ -97,21 +97,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb3d749d020e7846a9b07dd42eb0c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customerData: {fileID: 0}
   customerRenderer: {fileID: 4984599155708402771}
+  customerData: {fileID: 0}
   customerTile: {fileID: 0}
+  customerOrder: {fileID: 0}
   currentPatience: 0
   maxPatience: 0
-  customerOrder: {fileID: 0}
-  ingredient1: {fileID: 0}
-  ingredientState1: 0
-  ingredientCut1: 0
-  ingredient2: {fileID: 0}
-  ingredientState2: 0
-  ingredientCut2: 0
-  ingredient3: {fileID: 0}
-  ingredientState3: 0
-  ingredientCut3: 0
-  ingredient4: {fileID: 0}
-  ingredientState4: 0
-  ingredientCut4: 0
+  enter:
+    Guid:
+      Data1: -2085668152
+      Data2: 1144398189
+      Data3: 1462853049
+      Data4: -400694388
+    Path: event:/SFX/Customer enter
+  fail:
+    Guid:
+      Data1: -1087970041
+      Data2: 1325301157
+      Data3: -2017337931
+      Data4: -1404887818
+    Path: event:/SFX/Customer fail
+  success:
+    Guid:
+      Data1: 757667818
+      Data2: 1097003264
+      Data3: -1475057522
+      Data4: -908701221
+    Path: event:/SFX/Customer sucsess

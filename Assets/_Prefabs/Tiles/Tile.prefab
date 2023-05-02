@@ -214,6 +214,13 @@ MonoBehaviour:
   conveyorSpriteRenderer: {fileID: 1033448892711113895}
   conveyorAnimator: {fileID: 8489331723583970811}
   conveyorAnimatorString: Switch
+  conveyorTurn:
+    Guid:
+      Data1: 1998613935
+      Data2: 1156801844
+      Data3: 2041488768
+      Data4: 236832321
+    Path: event:/SFX/Conveyer turn
 --- !u!61 &8996414761112680449
 BoxCollider2D:
   m_ObjectHideFlags: 0

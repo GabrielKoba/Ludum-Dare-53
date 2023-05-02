@@ -115,6 +115,27 @@ MonoBehaviour:
   maxProgress: 0
   currentProgress: 0
   directionOfOriginBlocked: 0
+  cooking:
+    Guid:
+      Data1: 313798418
+      Data2: 1077058706
+      Data3: 2054668991
+      Data4: -1379708051
+    Path: event:/SFX/Faint food boiling
+  grilling:
+    Guid:
+      Data1: -698545908
+      Data2: 1128956667
+      Data3: -1091543168
+      Data4: -2013393515
+    Path: event:/SFX/Faint food cooking
+  slicing:
+    Guid:
+      Data1: 1498801003
+      Data2: 1315240516
+      Data3: 2015557804
+      Data4: 1604643129
+    Path: event:/SFX/Faint food slicing
 --- !u!61 &8295394215544153278
 BoxCollider2D:
   m_ObjectHideFlags: 0

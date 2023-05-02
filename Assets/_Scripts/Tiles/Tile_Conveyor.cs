@@ -1,4 +1,5 @@
 using UnityEngine;
+using FMODUnity;
 
 public class Tile_Conveyor : Tile
 {
@@ -7,6 +8,12 @@ public class Tile_Conveyor : Tile
     [SerializeField] protected SpriteRenderer conveyorSpriteRenderer;
     [SerializeField] protected Animator conveyorAnimator;
     [SerializeField] protected string conveyorAnimatorString;
+    [SerializeField] EventReference conveyorTurn;
+    FMOD.Studio.EventInstance turnSFX;
+
+    protected override void Start() {
+        base.Start();
+    }
 
     protected override void UpdateTile() {
         if (!conveyorSpriteRenderer) conveyorSpriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -45,8 +52,8 @@ public class Tile_Conveyor : Tile
             if (targetedTileHit.collider.gameObject.tag == "Tile") {
                 targetedTile = targetedTileHit.collider.GetComponent<Tile>();
 
-                UpdateTile();
                 ingredientInTile.MoveItemToTile(targetedTile, currentTileDirection, conveyorMoveSpeed);
+                this.UpdateTile();
 
                 currentlySendingIngredient = false;
                 return true;
@@ -54,8 +61,8 @@ public class Tile_Conveyor : Tile
             else if (targetedTileHit.collider.gameObject.tag == "Station") {
                 targetedTile = targetedTileHit.collider.GetComponent<Tile_Station>();
 
-                UpdateTile();
                 ingredientInTile.MoveItemToTile(targetedTile, currentTileDirection, conveyorMoveSpeed);
+                this.UpdateTile();
 
                 currentlySendingIngredient = false;
                 return true;
@@ -63,8 +70,8 @@ public class Tile_Conveyor : Tile
             else if (targetedTileHit.collider.gameObject.tag == "Delivery") {
                 targetedTile = targetedTileHit.collider.GetComponent<Tile_Delivery>();
 
-                UpdateTile();
                 ingredientInTile.MoveItemToTile(targetedTile, currentTileDirection, conveyorMoveSpeed);
+                this.UpdateTile();
 
                 currentlySendingIngredient = false;
                 return true;

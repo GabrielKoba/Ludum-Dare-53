@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System.Collections;
 using UnityEngine;
 using static IngredientData;
+using FMODUnity;
 
 public class Tile_Station : Tile {
 
@@ -21,6 +22,9 @@ public class Tile_Station : Tile {
     public float maxProgress;
     public float currentProgress;
     [SerializeField] private bool directionOfOriginBlocked;
+    [SerializeField] EventReference cooking;
+    [SerializeField] EventReference grilling;
+    [SerializeField] EventReference slicing;
 
     protected override void Update() {
         if (ingredientInTile && ingredientInTile.currentTile != this) ingredientInTile = null;
@@ -40,9 +44,9 @@ public class Tile_Station : Tile {
         directionOfOriginBlocked = false;
         currentProgress = 0;
 
-        if (currentStationType == StationType.Stove) maxProgress = ingredientInTile.data.cookTime;
-        else if (currentStationType == StationType.Grill) maxProgress = ingredientInTile.data.grillTime;
-        else if (currentStationType == StationType.CuttingBoard) maxProgress = ingredientInTile.data.sliceTime;
+        if (currentStationType == StationType.Stove) { maxProgress = ingredientInTile.data.cookTime; FMODUnity.RuntimeManager.PlayOneShot(cooking); }
+        else if (currentStationType == StationType.Grill) { maxProgress = ingredientInTile.data.grillTime; FMODUnity.RuntimeManager.PlayOneShot(grilling); }
+        else if (currentStationType == StationType.CuttingBoard) { maxProgress = ingredientInTile.data.sliceTime; FMODUnity.RuntimeManager.PlayOneShot(slicing); }
 
         while (preparingIngredient) {
             currentProgress += Time.deltaTime;

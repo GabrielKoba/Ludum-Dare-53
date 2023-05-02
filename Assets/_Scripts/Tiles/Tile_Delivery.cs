@@ -27,7 +27,7 @@ public class Tile_Delivery : Tile {
     public IngredientState ingredientState4;
     public IngredientCut ingredientCut4;
 
-    private bool FeedIngredient(IngredientData ingredientToAdd, IngredientState ingredientToAddState, IngredientCut ingredientToAddCut) {
+    public bool DeliverIngredient(IngredientData ingredientToAdd, IngredientState ingredientToAddState, IngredientCut ingredientToAddCut) {
         bool fedIngredient = false;
 
         if (ingredientToAdd == customerOrder.ingredient1 && ingredientToAddState == customerOrder.ingredientState1 && ingredientToAddCut == customerOrder.ingredientCut1) {

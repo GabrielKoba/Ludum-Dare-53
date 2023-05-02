@@ -25,13 +25,13 @@ public class CustomerManager : MonoBehaviour {
     [SerializeField] private List<Tile_Delivery> possibleCustomerTiles;
     [Range(5f, 30f)][SerializeField] private float timeUntilAddCustomer = 30f;
     [SerializeField] private float countToAddCustomer;
-    [Range(10f, 30f)][SerializeField] private float customerPatience = 30f;
+    [Range(10f, 60f)][SerializeField] private float customerPatience = 60f;
     [Space]
     [SerializeField] TileDirection customersAnchor = TileDirection.Up;
     [SerializeField] private Dictionary<CustomerInstance, Tile_Delivery> activeCustomers = new Dictionary<CustomerInstance, Tile_Delivery>();
     [Space]
     [Header("Order Settings")]
-    [Range(1, 3)] private int currentDifficultyLevel;
+    [SerializeField][Range(1, 3)] private int currentDifficultyLevel = 1;
     [SerializeField] private List<RecipeData> possibleOrdersDifficulty1;
     [SerializeField] private List<RecipeData> possibleOrdersDifficulty2;
     [SerializeField] private List<RecipeData> possibleOrdersDifficulty3;
@@ -51,17 +51,10 @@ public class CustomerManager : MonoBehaviour {
         CustomerData randomCustomer = possibleCustomers[Random.Range(0, possibleCustomers.Count)];
         Tile_Delivery randomCustomerTile = possibleCustomerTiles[Random.Range(0, possibleCustomerTiles.Count)];
 
-        switch (currentDifficultyLevel) {
-            case 1:
-                randomOrder = possibleOrdersDifficulty1[Random.Range(0, possibleOrdersDifficulty1.Count)];
-                break;
-            case 2:
-                randomOrder = possibleOrdersDifficulty2[Random.Range(0, possibleOrdersDifficulty2.Count)];
-                break;
-            case 3:
-                randomOrder = possibleOrdersDifficulty3[Random.Range(0, possibleOrdersDifficulty3.Count)];
-                break;
-        }
+        if (currentDifficultyLevel == 1) randomOrder = possibleOrdersDifficulty1[Random.Range(0, possibleOrdersDifficulty1.Count)];
+        else if (currentDifficultyLevel == 2) randomOrder = possibleOrdersDifficulty2[Random.Range(0, possibleOrdersDifficulty2.Count)];
+        else if (currentDifficultyLevel == 3) randomOrder = possibleOrdersDifficulty3[Random.Range(0, possibleOrdersDifficulty3.Count)];
+        else randomOrder = possibleOrdersDifficulty1[Random.Range(0, possibleOrdersDifficulty1.Count)];
 
         // Spawn Costumer & Set Values. 
         GameObject instantiatedCustomer = Instantiate(randomCustomer.prefab, transform.position, transform.rotation, transform);
@@ -70,6 +63,7 @@ public class CustomerManager : MonoBehaviour {
         instantiatedCustomerInstance.customerData = randomCustomer;
         instantiatedCustomerInstance.customerTile = randomCustomerTile; 
         instantiatedCustomerInstance.customerOrder = randomOrder;
+        instantiatedCustomerInstance.maxPatience = customerPatience;
         instantiatedCustomerInstance.currentPatience = customerPatience;
         instantiatedCustomerInstance.UpdateCostumer();
 

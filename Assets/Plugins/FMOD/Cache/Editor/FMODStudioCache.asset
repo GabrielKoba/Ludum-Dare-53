@@ -1,0 +1,457 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7195496069219615491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Win
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Win
+  Guid:
+    Data1: -1631831942
+    Data2: 1247530521
+    Data3: -1411924561
+    Data4: 1143066702
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5987581867661643801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Main music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Main music
+  Guid:
+    Data1: -946932670
+    Data2: 1095059923
+    Data3: -924094830
+    Data4: 281691375
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 102612
+--- !u!114 &-5679025317418563278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Faint food slicing
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Faint food slicing
+  Guid:
+    Data1: 1498801003
+    Data2: 1315240516
+    Data3: 2015557804
+    Data4: 1604643129
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-5151054732984107550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Conveyer place
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Conveyer place
+  Guid:
+    Data1: 118095747
+    Data2: 1288664304
+    Data3: -418384216
+    Data4: 1123510387
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-3429949820192186061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Click on spawner
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Click on spawner
+  Guid:
+    Data1: -1659338434
+    Data2: 1174243482
+    Data3: -505438310
+    Data4: 1998518123
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2564004510964709979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Conveyer turn
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Conveyer turn
+  Guid:
+    Data1: 1998613935
+    Data2: 1156801844
+    Data3: 2041488768
+    Data4: 236832321
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-1811539094239881991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Remove food
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Remove food
+  Guid:
+    Data1: -1372859350
+    Data2: 1127764541
+    Data3: -522450767
+    Data4: 1268104814
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 9168235985573686886}
+  - {fileID: 7777375521213055164}
+  EditorEvents:
+  - {fileID: 4651787053220748728}
+  - {fileID: 7423032135892062580}
+  - {fileID: 2923644517234432741}
+  - {fileID: -1811539094239881991}
+  - {fileID: -3429949820192186061}
+  - {fileID: -5987581867661643801}
+  - {fileID: -5679025317418563278}
+  - {fileID: -5151054732984107550}
+  - {fileID: -2564004510964709979}
+  - {fileID: 2443378777627047707}
+  - {fileID: 2273110886845126146}
+  - {fileID: 686153845633130539}
+  - {fileID: -7195496069219615491}
+  - {fileID: 349221020295572546}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 7777375521213055164}
+  StringsBanks:
+  - {fileID: 9168235985573686886}
+  cacheTime: 638185635470000000
+  cacheVersion: 131603
+--- !u!114 &349221020295572546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Fail
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Fail
+  Guid:
+    Data1: 1296609788
+    Data2: 1289373934
+    Data3: -1798647911
+    Data4: 1590113318
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &686153845633130539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Customer sucsess
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Customer sucsess
+  Guid:
+    Data1: 757667818
+    Data2: 1097003264
+    Data3: -1475057522
+    Data4: -908701221
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2273110886845126146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Conveyer remove
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Conveyer remove
+  Guid:
+    Data1: 1778927591
+    Data2: 1106912602
+    Data3: 1229748131
+    Data4: -1220850700
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2443378777627047707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Customer enter
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Customer enter
+  Guid:
+    Data1: -2085668152
+    Data2: 1144398189
+    Data3: 1462853049
+    Data4: -400694388
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &2923644517234432741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Faint food boiling
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Faint food boiling
+  Guid:
+    Data1: 313798418
+    Data2: 1077058706
+    Data3: 2054668991
+    Data4: -1379708051
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &4651787053220748728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Customer fail
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Customer fail
+  Guid:
+    Data1: -1087970041
+    Data2: 1325301157
+    Data3: -2017337931
+    Data4: -1404887818
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7423032135892062580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Faint food cooking
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Faint food cooking
+  Guid:
+    Data1: -698545908
+    Data2: 1128956667
+    Data3: -1091543168
+    Data4: -2013393515
+  Banks:
+  - {fileID: 7777375521213055164}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7777375521213055164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/kobag/OneDrive/Desktop/Ludum Dare/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638185635470000000
+  FileSizes:
+  - Name: Desktop
+    Value: 1733792
+  Exists: 1
+--- !u!114 &9168235985573686886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:/Users/kobag/OneDrive/Desktop/Ludum Dare/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638185635470000000
+  FileSizes:
+  - Name: Desktop
+    Value: 1370
+  Exists: 1

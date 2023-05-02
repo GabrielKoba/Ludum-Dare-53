@@ -14,19 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeName: Fish Soup
   difficultyLevel: 0
-  ingredient1: {fileID: 0}
-  amountRequired1: 0
-  ingredientState1: 0
-  ingredientStyle1: 0
-  ingredient2: {fileID: 0}
-  amountRequired2: 0
-  ingredientState2: 0
-  ingredientStyle2: 0
-  ingredient3: {fileID: 0}
-  amountRequired3: 0
-  ingredientState3: 0
-  ingredientStyle3: 0
+  ingredient1: {fileID: 11400000, guid: 20dda54d32ca79a4faded83510aa3064, type: 2}
+  ingredientState1: 2
+  ingredientCut1: 1
+  ingredient2: {fileID: 11400000, guid: 5958ba3f06c60d34a879df08175907dc, type: 2}
+  ingredientState2: 2
+  ingredientCut2: 1
+  ingredient3: {fileID: 11400000, guid: 603de22c7bfc34e47a41573f87995842, type: 2}
+  ingredientState3: 2
+  ingredientCut3: 1
   ingredient4: {fileID: 0}
-  amountRequired4: 0
   ingredientState4: 0
-  ingredientStyle4: 0
+  ingredientCut4: 0

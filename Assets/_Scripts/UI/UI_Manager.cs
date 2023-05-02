@@ -53,7 +53,8 @@ public class UI_Manager : MonoBehaviour {
     }
 
     public void GenerateCostumerUI(CustomerInstance customer) {
-        GameObject instantiatedProgressBar = Instantiate(customerUIPrefab, customer.transform.position, customer.transform.rotation, customerUIParent.transform);
+        GameObject instantiatedProgressBar = Instantiate(customerUIPrefab, customer.transform.localPosition, customer.transform.localRotation, customerUIParent.transform);
         instantiatedProgressBar.GetComponent<UI_Customer>().customer = customer;
+        instantiatedProgressBar.GetComponent<UI_Customer>().UpdateUI();
     }
 }

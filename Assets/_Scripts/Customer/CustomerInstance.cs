@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEngine;
 using static IngredientData;
+using FMODUnity;
 
 public class CustomerInstance : MonoBehaviour {
 
@@ -16,14 +17,17 @@ public class CustomerInstance : MonoBehaviour {
     [Space]
     [Range(0, 60)] public float currentPatience;
     [Range(0, 60)] public float maxPatience;
-
+    [SerializeField] EventReference enter;
+    [SerializeField] EventReference fail;
+    [SerializeField] EventReference success;
     private void Awake() {
         customerRenderer.GetComponent<SpriteRenderer>();
+        FMODUnity.RuntimeManager.PlayOneShot(enter);
     }
     private void Update() {
         currentPatience -= Time.deltaTime;
 
-        if (customerTile && customerOrder && CheckOrderComplete()) {
+        if (CheckOrderComplete()) {
             LeaveHappy();
         }
         else if (currentPatience <= 0) {
@@ -72,9 +76,11 @@ public class CustomerInstance : MonoBehaviour {
     }
 
     private void LeaveHappy() {
+        FMODUnity.RuntimeManager.PlayOneShot(success);
         customerManager.RemoveCustomer(this);
     }
     private void LeaveAngry() {
+        FMODUnity.RuntimeManager.PlayOneShot(fail);
         customerManager.RemoveCustomer(this);
     }
 

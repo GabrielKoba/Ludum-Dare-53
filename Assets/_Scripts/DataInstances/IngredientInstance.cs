@@ -17,7 +17,7 @@ public class IngredientInstance : MonoBehaviour {
     private float ingredientMoveSpeed;
     [Space]
     protected IngredientState currentState;
-    protected IngredientCut currentStyle;
+    protected IngredientCut currentCut;
 
 
     private void OnValidate() {
@@ -44,6 +44,11 @@ public class IngredientInstance : MonoBehaviour {
         }
         else {
             transform.position = currentTile.transform.position;
+
+            if (currentTile.gameObject.tag == ("Delivery")) {
+                currentTile.GetComponent<Tile_Delivery>().DeliverIngredient(data, currentState, currentCut);
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -54,7 +59,7 @@ public class IngredientInstance : MonoBehaviour {
         UpdateItem();
     }
     public void ChangeIngredientCut(IngredientCut style) {
-        currentStyle = style;
+        currentCut = style;
         UpdateItem();
     }
     public void MoveItemToTile(Tile tileToMoveTo, TileDirection directionOfOrigin, float timeToReachTile) {
@@ -68,7 +73,7 @@ public class IngredientInstance : MonoBehaviour {
     public void UpdateItem() {
         switch (currentState) {
             case IngredientState.Raw:
-                if (currentStyle == IngredientCut.Sliced) {
+                if (currentCut == IngredientCut.Sliced) {
                     iconRenderer.sprite = data.slicedRawSprite;
                 }
                 else {
@@ -79,7 +84,7 @@ public class IngredientInstance : MonoBehaviour {
                 break;
 
             case IngredientState.Cooked:
-                if (currentStyle == IngredientCut.Sliced) {
+                if (currentCut == IngredientCut.Sliced) {
                     iconRenderer.sprite = data.slicedCookedSprite;
                 }
                 else {
@@ -90,7 +95,7 @@ public class IngredientInstance : MonoBehaviour {
                 break;
 
             case IngredientState.Grilled:
-                if (currentStyle == IngredientCut.Sliced) {
+                if (currentCut == IngredientCut.Sliced) {
                     iconRenderer.sprite = data.slicedGrilledSprite;
                 }
                 else {

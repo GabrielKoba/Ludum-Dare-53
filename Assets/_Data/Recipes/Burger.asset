@@ -14,19 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeName: Burger
   difficultyLevel: 1
-  ingredient1: {fileID: 0}
-  amountRequired1: 0
-  ingredientState1: 0
-  ingredientStyle1: 0
-  ingredient2: {fileID: 0}
-  amountRequired2: 0
-  ingredientState2: 0
-  ingredientStyle2: 0
-  ingredient3: {fileID: 0}
-  amountRequired3: 0
+  ingredient1: {fileID: 11400000, guid: 0b71dc28c2bd462489ad3073c47c11d1, type: 2}
+  ingredientState1: 1
+  ingredientCut1: 0
+  ingredient2: {fileID: 11400000, guid: 0bb6f70e779852244ab55932c15d55bb, type: 2}
+  ingredientState2: 1
+  ingredientCut2: 1
+  ingredient3: {fileID: 11400000, guid: 14dd105f019ac774eac05e600e425e86, type: 2}
   ingredientState3: 0
-  ingredientStyle3: 0
+  ingredientCut3: 0
   ingredient4: {fileID: 0}
-  amountRequired4: 0
   ingredientState4: 0
-  ingredientStyle4: 0
+  ingredientCut4: 0
